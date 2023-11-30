@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.IO;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,13 +23,23 @@ namespace DzHttpClientWpf29_11_2023
         // // 3. считать
         // string responsBody =  await respons.Content.ReadAsStringAsync();
         // Console.WriteLine(responsBody);
-        //HttpClient httpClient = new HttpClient();
-
+        HttpClient httpClient = new HttpClient();
+        public  async void  webpars()
+        {
+            using (HttpClient client = new HttpClient()) { }
+            HttpResponseMessage respons = await httpClient.GetAsync($"http://numbersapi.com/{10}");
+           
+        }
+       
+        int num = 0;
         private void ButtGet_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxDataHttp.Text = "gdfgdsdsg";
-           // Thread.Sleep(1000);
-            TextBoxDataHttp.Text = string.Empty;
+            string str = "Сообщение " + num + "\n"; 
+            TextBoxDataHttp.Text += str;
+            num++;
+           
+            // Thread.Sleep(1000);
+            // TextBoxDataHttp.Text = string.Empty;
         }
         // HttpResponseMessage respons = httpClient.GetAsync($"http://numbersapi.com/{10}");
         //string responsBody = Respons.Content.ReadAsStringAsync();
